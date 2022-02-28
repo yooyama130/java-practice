@@ -1,11 +1,9 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class Chapter15_2 {
@@ -17,9 +15,9 @@ public class Chapter15_2 {
 
         // Java7以降に追加された「try-with-resources」文で処理
         // Filesクラスを使用して、BufferedReaderクラスのインスタンスを生成
-        BufferedReader br = new BufferedReader(new FileReader("resources/input.txt"));
+        BufferedReader br = Files.newBufferedReader(inputPath);
         // Filesクラスを使用して、BufferedWriterクラスのインスタンスを生成
-        BufferedWriter bw = new BufferedWriter(new FileWriter("resources/output.txt"));
+        BufferedWriter bw = Files.newBufferedWriter(outputPath);
         try (br; bw;) {
 
             String line = null;
